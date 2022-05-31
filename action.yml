@@ -22,4 +22,5 @@ runs:
         cd "$TEMP"
         curl https://kojipkgs.fedoraproject.org//packages/cswrap/2.2.0/1.fc36/x86_64/cswrap-2.2.0-1.fc36.x86_64.rpm | rpm2cpio | cpio -div
         echo "PATH=$PWD/usr/lib64/cswrap:$PATH" >> "$GITHUB_ENV"
+        echo "CSWRAP_CAP_FILE=$GITHUB_WORKSPACE/cswrap_capture.log" >> "$GITHUB_ENV"
       shell: bash
