@@ -1,0 +1,17 @@
+name: TEST
+on: [pull]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - run: echo 'int main(void) { puts("HELLO"); }' > test.c
+
+      - uses: ./
+
+      - run: |
+          command -v cc
+          realpath cc
+          cc test.c
