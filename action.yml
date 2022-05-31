@@ -1,0 +1,27 @@
+name: Codescan Wrap Action
+description: Differential ShellCheck
+
+branding:
+  icon: check-circle
+  color: green
+
+inputs:
+  token:
+    description: GitHub TOKEN used to upload SARIF data
+    required: false
+
+# outputs:
+#   result:
+#     description: Result of Differential ShellCheck
+
+runs:
+  using: composite
+  steps:
+    - run: |
+        TEMP="$(mktemp -d)"
+        cd "$TEMP"
+        sudo apt update
+        sudo apt install -y rpm2cpio
+        curl https://kojipkgs.fedoraproject.org//packages/cswrap/2.2.0/1.fc36/x86_64/cswrap-2.2.0-1.fc36.x86_64.rpm | rpm2cpio | cpio -div
+        echo "PATH=$PWD/usr/lib64/cswrap:$PATH" >> "$GITHUB_ENV"
+      shell: bash
