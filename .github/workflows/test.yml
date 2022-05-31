@@ -15,3 +15,5 @@ jobs:
           command -v cc
           realpath "$(command -v cc)"
           cc test.c
+
+      - run: cat cswrap_capture.log
