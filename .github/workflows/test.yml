@@ -17,4 +17,4 @@ jobs:
           realpath "$(command -v cc)"
           cc test.c
 
-      - run: cat "${{ steps.cswrap.result }}"
+      - run: cat "${{ steps.cswrap.outputs.result }}"
