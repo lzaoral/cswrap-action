@@ -17,4 +17,4 @@ jobs:
           realpath "$(command -v cc)"
           cc test.c
 
-      - run: cat "${{ steps.cswrap.outputs.result }}"
+      - run: cat "$CSWRAP_CAP_FILE"
