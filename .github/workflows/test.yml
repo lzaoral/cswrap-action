@@ -8,6 +8,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - run: echo 'int main(void) { puts("HELLO"); }' > test.c
+        id: cswrap
 
       - uses: ./
 
@@ -16,4 +17,4 @@ jobs:
           realpath "$(command -v cc)"
           cc test.c
 
-      - run: cat cswrap_capture.log
+      - run: cat "${{ steps.cswrap.result }}"
